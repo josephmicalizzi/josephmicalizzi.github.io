@@ -16,8 +16,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     
-    <!--MODIFY your web page title -->
-    <title>Report Type: </title>
+    <title>Sisal Green</title>
 
     <script type="text/javascript"
         src="http://maps.google.com/maps/api/js?sensor=false"></script>
