@@ -1,37 +1,107 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
+<!--
+  Copyright 2011 Google Inc. All Rights Reserved.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+      http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    
+    <!--MODIFY your web page title -->
+    <title>Report Type: </title>
 
-You can use the [editor on GitHub](https://github.com/josephmicalizzi/josephmicalizzi.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+    <script type="text/javascript"
+        src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+    <style type="text/css">
+      html, body, #map-canvas {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+    
+      #legend {
+        background: #FFF;
+        padding: 10px;
+        margin: 5px;
+        font-size: 12px;
+        font-family: Arial, sans-serif;
+      }
+      .color {
+        border: 1px solid;
+        height: 12px;
+        width: 12px;
+        margin-right: 3px;
+        float: left;
+      }
+      .red {
+        background: #C00;
+      }
+      .yellow {
+        background: #FF3;
+      }
+      .green {
+        background: #6F0;
+      }
+      .blue {
+        background: #06C;
+      }
+      .purple {
+        background: #63C;
+      }
+    </style>
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/josephmicalizzi/josephmicalizzi.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+    <script type="text/javascript">
+      function initialize() {
+        // MODIFY the map center point, zoom level, and type if desired
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+          center: new google.maps.LatLng(-2.4, 37.6),
+          zoom: 4,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        // MODIFY these items in the section below: 
+        // Insert the header of the geocoded location data column in your Google Fusion Table. Mine is 'Address'. If your header includes spaces, type with double-quotes around single-quotes, like this: "'My Addresses'"
+        // Insert your Google Fusion Table ID number, the long string that appears in File menu > About this Table.
+        // Insert your styleId and templateId numbers, which appear in your GFT > Map > Publish > Get HTML and JavaScript.
+        var layer = new google.maps.FusionTablesLayer({
+          map: map,
+          query: {
+            select: 'Lat',
+            from: '1ysWzkdQXT3gD_VLKO2IDK8i_zLSwhnrcHlSYclX_',
+          },
+          options:{
+            styleId: 5,
+            templateId: 6
+          }
+        });
+        // MODIFY Title and text of your legend. Match color names and labels to the Google Fusion Table map marker icons you already created.
+        // To display link to source data, insert the URL of your Google Fusion Table.
+        var legend = document.createElement('div');
+        legend.id = 'Report Type';
+        var content = [];
+        content.push('<h3>Company</h3>');
+        content.push('<p><div class="color red"></div>ARREST</p>');
+        content.push('<p><div class="color blue"></div>HWC</p>');
+        content.push('<p><div class="color yellow"></div>HEC</p>');
+        content.push('<p><a href="https://www.google.com/fusiontables/DataSource?docid=1ysWzkdQXT3gD_VLKO2IDK8i_zLSwhnrcHlSYclX_">Source Data</a>');
+        legend.innerHTML = content.join('');
+        legend.index = 1;
+        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
