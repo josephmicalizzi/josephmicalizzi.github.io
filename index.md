@@ -79,8 +79,8 @@
             from: '1ysWzkdQXT3gD_VLKO2IDK8i_zLSwhnrcHlSYclX_',
           },
           options:{
-            styleId: 5,
-            templateId: 6
+            styleId: 2,
+            templateId: 2
           }
         });
         // MODIFY Title and text of your legend. Match color names and labels to the Google Fusion Table map marker icons you already created.
