@@ -56,32 +56,24 @@
               </label>
             </p>
             
-            <br />
-            <h4>Report Type</h4>
+          <br />
+            <h4>Custom filters and views</h4>
             <p>Take a look at the <a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples'>wiki</a> to see how to add your own custom filters and views like:</p>
-            <ul class='inputs-list unstyled'>
-              <li>
-                <label class='checkbox inline'>
-                  <input type='checkbox' id='cbType1' />
-                  <span class='filter-box filter-blue'></span>
-                  Human Wildlife Conflict
-                </label>
-              </li>
-              <li>
-                <label class='checkbox inline'>
-                  <input type='checkbox' id='cbType2' />
-                  <span class='filter-box filter-yellow'></span>
-                  Human Elephant Conflict
-                </label>
-                </li>
-              <li>
-                <label class='checkbox inline'>
-                  <input type='checkbox' id='cbType3' />
-                  <span class='filter-box filter-red'></span>
-                  Arrest (Wildlife Crime)
-                  </label>
-                </li>
-            </ul>
+            <div class='row'>
+              <div class='col-md-6'>
+                <ul>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-checkboxes'>Checkboxes</a></li>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-radiobuttons'>Radio buttons</a></li>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-drop-down-lists'>Drop down lists</a></li>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-textsearches'>Text searches</a></li>
+                </ul>
+              </div>
+              <div class='col-md-6'>
+                <ul>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-sliders'>Sliders</a></li>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples#wiki-date-sliders'>Date sliders</a></li>
+                  <li><a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/List-search-results'>Results lists</a></li>
+                </ul>
               </div>
             </div>
             <br />
@@ -94,6 +86,10 @@
               Reset
             </a>
           </div>
+          <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
+        </div>
+        <div class='col-md-8'>
+          <noscript>
           <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
         </div>
         <div class='col-md-8'>
