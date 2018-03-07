@@ -323,7 +323,7 @@ self.whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','
  
     MapsLib.prototype.getList = function(whereClause) {
     var self = this;
-    var selectColumns = 'name, address, hours, recyclables ';
+    var selectColumns = 'ReportType, Date, Subject, Description';
 
     self.query({ 
       select: selectColumns, 
