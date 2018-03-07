@@ -13,7 +13,7 @@
 
         // Found at https://console.developers.google.com/
         // Important! this key is for demonstration purposes. please register your own.
-        this.googleApiKey = options.googleApiKey || "AIzaSyCrpFlaiqwl3V1Q5BnTDuP8-8yYJgDKZkU",
+        this.googleApiKey = options.googleApiKey || "AIzaSyC64B6r0QeEwMtRpuU8FCZcOOY5_PQy5TI",
         
         // name of the location column in your Fusion Table.
         // NOTE: if your location column name has spaces in it, surround it with single quotes
