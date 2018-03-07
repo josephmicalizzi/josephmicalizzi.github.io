@@ -8,8 +8,6 @@
     <meta content='' name='author' />
     <!-- Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/dataTables.bootstrap.css"/>
     <link rel="stylesheet" href="css/custom.css"/>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -116,57 +114,67 @@
             </div>
           </noscript>
           <div id='map_canvas'></div>
-          <hr />
-          <div id='listview'></div>
+          <p class='pull-right'>
             <a href='https://fusiontables.google.com/data?docid=1ysWzkdQXT3gD_VLKO2IDK8i_zLSwhnrcHlSYclX_#card:id=2'>Data Source</a>
         </p>
         </div>
       </div>
     </div>
 
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="js/jquery.address.js"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
-    <script type="text/javascript" src="js/jquery.geocomplete.min.js"></script>
-    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="js/jquery.dataTables.sorting.js"></script>
-    <script type="text/javascript" src="js/jquery.dataTables.bootstrap-pagination.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places&key=AIzaSyAR5eeFETe-sMigouZtPABzHpyA02MGyjQ"></script>
     <script type="text/javascript" src="js/maps_lib.js"></script>
     <script type='text/javascript'>
       //<![CDATA[
-$(window).resize(function () {
+        $(window).resize(function () {
           var h = $(window).height(),
             offsetTop = 105; // Calculate the top offset
+        
           $('#map_canvas').css('height', (h - offsetTop));
         }).resize();
+        
         $(function() {
-          MapsLib.initialize();
-          $("#search_address").geocomplete();
+          var myMap = new MapsLib({
+            fusionTableId:      "1ysWzkdQXT3gD_VLKO2IDK8i_zLSwhnrcHlSYclX_",
+            googleApiKey:       "AIzaSyCrpFlaiqwl3V1Q5BnTDuP8-8yYJgDKZkU",
+            locationColumn:     "Lat",
+            map_center:         [-2.506281, 37.497662],
+            locationScope:      "Kenya"
+          });
+
+          var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_address'));
+      
           $(':checkbox').click(function(){
-            MapsLib.doSearch();
+            myMap.doSearch();
           });
+
           $(':radio').click(function(){
-            MapsLib.doSearch();
+            myMap.doSearch();
           });
+          
           $('#search_radius').change(function(){
-            MapsLib.doSearch();
+            myMap.doSearch();
           });
+          
           $('#search').click(function(){
-            MapsLib.doSearch();
+            myMap.doSearch();
           });
+          
           $('#find_me').click(function(){
-            MapsLib.findMe();
+            myMap.findMe(); 
             return false;
           });
+          
           $('#reset').click(function(){
-            $.address.parameter('address','');
-            MapsLib.initialize();
+            myMap.reset(); 
             return false;
           });
+          
           $(":text").keydown(function(e){
               var key =  e.keyCode ? e.keyCode : e.which;
-              if(key == 13) {
+              if(key === 13) {
                   $('#search').click();
                   return false;
               }
