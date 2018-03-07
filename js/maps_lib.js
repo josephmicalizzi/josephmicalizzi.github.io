@@ -178,6 +178,13 @@
         self.whereClause = self.locationColumn + " not equal to ''";
         
         //-----custom filters-----
+        var type_column = "'ReportType'";
+var tempWhereClause = [];
+if ( $("#cbType1").is(':checked')) tempWhereClause.push("HWC");
+if ( $("#cbType2").is(':checked')) tempWhereClause.push("HEC");
+if ( $("#cbType3").is(':checked')) tempWhereClause.push("ARREST");
+if ( $("#cbType4").is(':checked')) tempWhereClause.push("INTEL");
+self.whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + "')";
         //-----end of custom filters-----
 
         self.getgeoCondition(address, function (geoCondition) {
