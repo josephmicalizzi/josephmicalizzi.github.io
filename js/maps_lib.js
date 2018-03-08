@@ -9,7 +9,7 @@
         this.searchRadius = options.searchRadius || 805; //in meters ~ 1/2 mile
 
         // the encrypted Table ID of your Fusion Table (found under File => About)
-        this.fusionTableId = options.fusionTableId || "1PdBlePJ8zGt8uJH_NbpH0v2hWt_0ecaDv1ajcO8r",
+        this.fusionTableId = options.fusionTableId || "1RV-D8oCLtZK4oZl2gF_RH8r9kUO1PKUEQMangwWW",
 
         // Found at https://console.developers.google.com/
         // Important! this key is for demonstration purposes. please register your own.
@@ -182,8 +182,9 @@
 var tempWhereClause = [];
 if ( $("#cbType1").is(':checked')) tempWhereClause.push("HWC");
 if ( $("#cbType2").is(':checked')) tempWhereClause.push("HEC");
-if ( $("#cbType3").is(':checked')) tempWhereClause.push("ARREST");
-if ( $("#cbType4").is(':checked')) tempWhereClause.push("INTEL");
+if ( $("#cbType3").is(':checked')) tempWhereClause.push("ARREST")
+if ( $("#cbType4").is(':checked')) tempWhereClause.push("POACHING");
+if ( $("#cbType5").is(':checked')) tempWhereClause.push("INTEL");
 self.whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + "')";
         //-----end of custom filters-----
 
